@@ -1,0 +1,235 @@
+
+
+
+.pagination-container {
+    display: flex;
+    gap: 5px;
+    margin: 30px auto;
+    align-items: center;
+    width: max-content;
+    background-color: rgb(255, 255, 255);
+    padding: 4px 15px;
+    border-radius: 15px;
+    box-shadow: 2px 6px 38px -10px rgb(122 122 122);
+  }
+
+  .pagination-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .page-number {
+    font-size: 15px;
+    color: rgb(83, 83, 83);
+    cursor: pointer;
+    width: 21px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: 0.2s;
+    background: transparent;
+    border: transparent;
+  }
+  
+  .page-active{
+    color: crimson;
+    border-bottom: 2px solid crimson;
+    transition: 0.2s;
+  }
+
+
+  .pagination-prev {
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    width: 20px;
+    border: transparent;
+    aspect-ratio: 1;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background: crimson;
+    box-shadow: 0px 1px 3px rgb(32, 32, 32);
+  }
+
+  .ellipsis {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    width: 24px;
+    border: transparent;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background: transparent;
+    border-radius: 50%;
+    transition: 0.1.5s;
+}
+
+.m-left-btn-page {
+    margin-left: -6px;
+}
+
+.m-right-btn-page {
+    margin-right: -6px;
+  }
+
+  
+
+  /* ---------- Media ---------- */
+
+
+  @media (min-width: 900px) {
+
+
+    .pagination-container {
+      gap: 7px;
+      padding: 4.5px 15px;
+      box-shadow: 2px 6px 38px -10px rgb(122 122 122);
+    }
+  
+    .pagination-number{
+      gap: 7px;
+      padding-left: 0;
+    }
+  
+    .page-number {
+      font-size: 18px;
+      width: 26px;
+    }
+  
+  
+    .pagination-prev {
+      font-size: 14px;
+      width: 22px;
+  
+      background: crimson;
+      box-shadow: 0px 1px 3px rgb(32, 32, 32);
+    }
+  
+    .ellipsis {
+      font-size: 16px;
+      width: 25px;
+
+  }
+  
+  .m-left-btn-page {
+      margin-left: -5px;
+  }
+  
+  .m-right-btn-page {
+      margin-right: -5px;
+    }
+  
+
+}
+
+
+
+
+
+  
+@media (min-width: 900px) {
+
+
+  .pagination-container {
+    gap: 7px;
+    padding: 4.5px 15px;
+    box-shadow: 2px 6px 38px -10px rgb(122 122 122);
+    margin: 33px auto;
+  }
+
+  .pagination-number{
+    gap: 7px;
+    padding-left: 0;
+  }
+
+  .page-number {
+    font-size: 18px;
+    width: 26px;
+  }
+
+
+  .pagination-prev {
+    font-size: 14px;
+    width: 22px;
+
+    background: crimson;
+    box-shadow: 0px 1px 3px rgb(32, 32, 32);
+  }
+
+  .ellipsis {
+    font-size: 16px;
+    width: 25px;
+
+}
+
+.m-left-btn-page {
+    margin-left: -5px;
+}
+
+.m-right-btn-page {
+    margin-right: -5px;
+  }
+
+}
+
+
+
+
+
+@media (min-width: 1350px) {
+
+
+  .pagination-container {
+    gap: 8px;
+    padding: 5px 15px;
+    box-shadow: 2px 6px 38px -10px rgb(122 122 122);
+    margin: 37px auto;
+  }
+
+  .pagination-number{
+    gap: 10px;
+    padding-left: 0;
+  }
+
+  .page-number {
+    font-size: 21px;
+    width: 33px;
+  }
+
+
+  .pagination-prev {
+    font-size: 16px;
+    width: 30px;
+
+    background: crimson;
+    box-shadow: 0px 1px 3px rgb(32, 32, 32);
+  }
+
+  .ellipsis {
+    font-size: 19px;
+    width: 29.5px;
+
+}
+
+.m-left-btn-page {
+    margin-left: -5px;
+}
+
+.m-right-btn-page {
+    margin-right: -5px;
+  }
+
+
+
+
+}

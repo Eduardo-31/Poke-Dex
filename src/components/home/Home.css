@@ -1,0 +1,203 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+/* ====== Homeee ======== */
+
+
+.bg-home {
+    background:black;
+}
+
+
+.container-home {
+    box-sizing: border-box;
+    padding: 20px 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://pokemaster.es/css/i/p/imagen_193517.png');
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../img/portada-pokemon.jpg');
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('https://w0.peakpx.com/wallpaper/740/298/HD-wallpaper-pokemon-game-poke-ball-red-simplistic.jpg');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
+  
+  .title-img-home {
+    width: 240px;
+  }
+  
+  .container-img {
+    padding: 7px 0 13px 0;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2px;
+   }
+  
+   .img-ash {
+    height: 100%;
+   }
+  
+   .img-pokemon {
+    height: 30%;
+   }
+  
+  .home p {
+    font-size: 1rem;
+    font-weight: 500; 
+    color: white;
+  }
+  
+  
+  .subtitle-home {
+    color: crimson;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 2px rgb(0, 0, 0);
+  }
+  
+  .form-home {
+    padding-top: 30px;
+  }
+  
+  .form-home input {
+    padding: 6px 9px;
+    border: transparent;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffff;
+    border-bottom: 2px solid white;
+    transition: ease 0.4s;
+    width: 150px;
+  }
+  
+  .form-home input:focus {
+    outline: none;
+    border-bottom: 2px solid crimson;
+  }
+  .form-home input:hover {
+    border-bottom: 2px solid crimson;
+    transition: ease 0.5s;;
+  }
+  
+  .form-home button {
+    background-color: crimson;
+    border: transparent;
+    padding: 8px 10px;
+    border-radius: 0 4px 4px 0;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.2s;
+    min-width: 90px;
+  }
+  
+  .form-home button:hover {
+    box-shadow: 1px 1px 2px black;
+    cursor: pointer;
+    box-shadow: 1px 1px 2.5px rgb(223, 223, 223);
+    transition: 0.3s;
+  }
+  
+  button:active {
+    transform: translateY(-3px);
+    box-shadow: 1px 1px 2px black;
+  }
+  
+
+
+
+
+
+
+@media (min-width: 1000px )  {
+
+
+    .container-home {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5)), url('../img/portada-pokemon.jpg');
+    }
+
+    .container-img {
+        height: 230px;
+    }
+
+    .title-img-home {
+        width: 340px;
+    }
+
+    .subtitle-home {
+        font-size: 1.85rem;
+    }
+
+    .home p {
+        font-size: 1.1rem;
+    }
+
+  
+
+    .form-home input {
+        font-size: 15.5px;
+        
+    }
+
+    .form-home button {
+        font-size: 15.5px;
+        min-width: 100px;
+        border-radius: 0px 6px 6px 0px;
+    }
+
+}
+
+
+
+
+@media (min-width: 1500px )  {
+
+
+    .container-img {
+        height: 270px;
+    }
+
+    .title-img-home {
+        width: 370px;
+    }
+
+    .subtitle-home {
+        font-size: 2rem;
+    }
+
+    .home p {
+        font-size: 1.2rem;
+    }
+
+  
+
+    .form-home input {
+        font-size: 16px;
+        width: 170px;
+        font-weight: 600;
+    }
+
+    .form-home button {
+        font-size: 16px;
+        min-width: 110px;
+        font-weight: 600;
+        border-radius: 0px 8px 8px 0px;
+    }
+
+}
