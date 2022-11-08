@@ -29,6 +29,7 @@
   color: #FFCB05;
   -webkit-text-stroke: 1.2px rgb(59, 97, 221);
   font-weight: 900;
+  text-align: center;
   }
   
   .portada-img-play {
@@ -94,7 +95,6 @@
 
     .title-play{
       font-size: 2.7rem;
-      text-align: center;
       }
 
       .container-btn-play {
@@ -146,7 +146,6 @@
 
     .title-play{
       font-size: 2.9rem;
-      text-align: center;
       }
 
       .container-btn-play {
@@ -166,7 +165,6 @@
 
     .title-play{
       font-size: 2.9rem;
-      text-align: center;
       }
 
       .container-btn-play {
@@ -188,8 +186,7 @@
     }
 
     .title-play{
-      font-size: 2.9rem;
-      text-align: center;
+      font-size: 3rem;
       }
 
       .container-btn-play {
@@ -210,14 +207,13 @@
       width: 50%;
     }
 
+    .title-play{
+      font-size: 3.1rem;
+      }
+
     .section-play > img{
       width: 80%;
     }
-
-    .title-play{
-      font-size: 2.9rem;
-      text-align: center;
-      }
 
       .container-btn-play {
         top: 60%;
@@ -247,7 +243,9 @@
 
   @media (min-width: 1520px){
 
-
+    .title-play{
+      font-size: 3.3rem;
+      }
     .section-play{
       width: 43%;
     }
