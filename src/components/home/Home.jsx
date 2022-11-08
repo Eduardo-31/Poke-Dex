@@ -9,7 +9,7 @@ import charmander from '../img/charmander.png'
 import squirtle from '../img/squirtle.png'
 import poke from '../img/pokemon-logo.png'
 
-const Home = ({setIsLogged}) => {
+const Home = () => {
     
   return (
     <div className='bg-home'>
@@ -33,9 +33,8 @@ const Home = ({setIsLogged}) => {
     
       </div>
           <span className='subtitle-home'>!Hello trainer!</span>
-          <p>to start, give me your name</p>
-          <HomeInput setIsLogged={setIsLogged}          
-          />
+          <p className='text-home'>to start, give me your name</p>
+          <HomeInput />
       </div>
 
     </section>

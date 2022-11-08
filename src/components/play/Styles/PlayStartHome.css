@@ -8,12 +8,15 @@
    background: url('https://lh3.googleusercontent.com/tlIBC-OoNcTiL7SXVcrCIG91xE_XVFzYyRKLouFq5NV7LYOznYyXI7ualBMV15H9L1eGWVGz5Co1GXqqgJYDZ-5sDY7QzPPeTID975gJ3PIpNMc=e365-w1259');
     background-size: cover;
    background-repeat: no-repeat;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .section-play {
     width: 100%;
-    margin: 0 auto
+    margin: 0 auto;
+    max-width: 935px;
   }
   
   .section-play img {
@@ -23,9 +26,10 @@
   .title-play{
   font-family: 'Shojumaru', cursive;
   font-size: 2rem;
-  color: rgb(255, 230, 0);
+  color: #FFCB05;
   -webkit-text-stroke: 1.2px rgb(59, 97, 221);
   font-weight: 900;
+  text-shadow: 1px 1px 4px black;
   }
   
   .portada-img-play {
@@ -196,12 +200,15 @@
   @media (min-width: 1200px){
 
     .container-play {
-      padding: 30px 0;
+      padding: 20px 0 40px 0;
     }
 
     .section-play{
-      width: 40%;
-      max-width: 800px;
+      width: 50%;
+    }
+
+    .section-play > img{
+      width: 80%;
     }
 
     .title-play{
@@ -225,5 +232,23 @@
       }
 
   }
+  @media (min-width: 1340px){
 
+
+    .section-play{
+      width: 45%;
+    }
+
+  }
+
+  @media (min-width: 1520px){
+
+
+    .section-play{
+      width: 43%;
+    }
+
+  }
+
+ 
 

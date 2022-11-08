@@ -1,5 +1,4 @@
 import React from 'react'
-import ashandpikachu from '../img/ashandpikachu.png'
 import psyduck from '../img/3-psyduck.png'
 
 const WrongAnswer = ({isRessWrong}) => {

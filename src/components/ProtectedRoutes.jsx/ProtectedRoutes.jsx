@@ -1,11 +1,11 @@
 import React from 'react'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { Navigate, Outlet } from 'react-router-dom'
 
-const ProtectedRoutes = ({isLogged}) => {
+const ProtectedRoutes = () => {
 
-
-
-    if(isLogged) {
+    const user = localStorage.getItem('name')
+    if(user) {
         return <Outlet />
     } else {
         return <Navigate to='/'/>

@@ -1,20 +1,17 @@
 import React from 'react'
-import title from '../img/pokedex.png.png'
 import { useNavigate } from 'react-router-dom'
-import Footer from '../footer/Footer'
-import WrongAnswer from './PlayGuessWrongAnswer'
-
+import title from '../img/pokedex.png.png'
+import './Styles/PlayStartHome.css'
 
 const PlayStart = () => {
 
     const navigate = useNavigate()
 
   return (
-    <>
     <section className='container-play'>
         
         <div className='section-play'>
-        <h4 className='title-play'>Guess The</h4>
+        <p className='title-play'>minigames</p>
 
             <img src={title} alt="" />
         <div className='portada-img-play'>
@@ -28,8 +25,6 @@ const PlayStart = () => {
 
         </div>
     </section>
-        <Footer />
-    </>
   )
 }
 

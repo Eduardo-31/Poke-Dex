@@ -30,7 +30,6 @@ function App() {
           <Route path={'/pokedex'}>
             <Route index element={<PokedexScreen />} />
             <Route path={':name'} element={<PokemonInfo />} />
-            <Route path={'error404'} element={<h2> Pagina no encontrada</h2>} />
             <Route path='play'>
               <Route index element={<PlayStart />} />
               <Route path={'guess'} element={<PlayGuessPokedexScreen />} />

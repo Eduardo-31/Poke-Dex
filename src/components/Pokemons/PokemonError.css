@@ -1,0 +1,122 @@
+.portada-pokemon-error {
+    background-color: aqua;
+    background: url(https://img.freepik.com/vector-gratis/fondo-estilo-comico_23-2148836600.jpg?w=1380&t=st=1666326413~exp=1666327013~hmac=9fd101ada176d65a14372a9532dcf4e963c5e373521d0727d20185efc1c07f74);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-pokemon-error {
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    padding: 10px 15px;
+}
+
+.error-pokemon-img {
+    width: 210px;
+}
+
+.error-pokemon-img img {
+    width: 100%;
+    filter: drop-shadow(0px 0px 7px);
+}
+
+.error-pokemon-btn {
+    margin-top: -75%;
+    margin-right: -22%;
+    z-index: 2;
+}
+
+.error-pokemon-btn button {
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: aliceblue;
+    padding: 4px 9px;
+    border-radius: 4px;
+    background-color: #e92929;
+    box-shadow: 0px 0px 10px 0px #e92929;
+    cursor: pointer;
+    transition: ease 200ms;
+}
+
+.error-pokemon-btn button:hover {
+    transition: ease 200ms;
+    box-shadow: 0px 0px 15px 1px #ffffff;
+    background: rgb(236, 230, 230);
+    color: #e92929;
+}
+
+.error-pokemnon-text {
+    color: #3D7DCA;
+    color: #ffe62d;
+    text-shadow: 1px 1px 10px rgb(0, 0, 0);
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+
+.d-flex-img-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+@media (min-width: 920px) {
+
+    .card-pokemon-error {
+        gap: 35px;
+    }
+
+    .error-pokemnon-text {
+        font-size: 2.1rem;
+    }
+
+    .error-pokemon-img {
+        width: 240px;
+    }
+
+    .error-pokemon-btn button {
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .error-pokemon-btn {
+       margin-top: -70%;
+    }
+
+}
+
+@media (min-width: 1500px) {
+
+    .card-pokemon-error {
+        gap: 40px;
+    }
+    
+    .error-pokemnon-text {
+        font-size: 2.3rem;
+    }
+
+    .error-pokemon-img {
+        width: 280px;
+    }
+
+    .error-pokemon-btn button {
+        padding: 6px 13px;
+        font-size: 1rem;
+    }
+
+    .error-pokemon-btn {
+       margin-top: -74%;
+    }
+
+}

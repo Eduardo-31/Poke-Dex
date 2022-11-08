@@ -20,6 +20,7 @@
     margin: 0 auto;
     position: relative;
     overflow: hidden;
+    padding-bottom: 40px; 
   }
   
   
@@ -1315,6 +1316,9 @@
 
 @media (min-width: 1490px){
 
+  .card-title {
+    gap: 20px;
+  }
 
   .card-ress-correct-play {
     top: 22%; 
@@ -1393,6 +1397,9 @@
 
 @media (min-width: 1620px){
 
+  .card-title {
+    gap: 30px;
+  }
 
   .card-ress-correct-play {
     top: 23.5%;
@@ -1411,11 +1418,6 @@
     left: 31.5%;
   }
 
-  .section-play-pokedex {
-    max-width: 675px;
-  }
-
-
   .container-go-to-pokedex {
     margin-top: 7px;
   }
@@ -1428,11 +1430,19 @@
   .play-go-to-pokedex  p {
     font-size: 28px;
   }
-
-
+ 
 
 }
 
+@media (min-width: 1690px) {
 
+  .section-play-pokedex {
+    padding-bottom: 45px; 
+    max-width: 764px;
+  }
 
+  .container-play-pokedex {
+    min-height: calc(100vh - 226.798px);
+  }
+}
 

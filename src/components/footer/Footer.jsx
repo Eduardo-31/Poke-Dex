@@ -9,9 +9,11 @@ const Footer = () => {
     <footer>
             
         <div className='card-link'>
-            <a className='a-footer' ><i className="fa-brands fa-linkedin-in"></i></a>
-            <a className='a-footer' ><i className="fa-brands fa-instagram"></i></a>
-            <a className='a-footer' ><i className="fa-brands fa-github"></i></a>
+            <a href='https://www.linkedin.com/in/eduardo-izacupe-5662a8245/' target='_blank' className='a-footer' ><i className="fa-brands fa-linkedin-in"></i></a>
+            {
+            //<a className='a-footer' ><i className="fa-brands fa-instagram"></i></a>
+            }
+            <a href='https://github.com/Eduardo-31/Poke-Dex.git' target='_blank' className='a-footer' ><i className="fa-brands fa-github"></i></a>
         </div>
         <div className='footer-line'></div>
         <p>Designed and made by: Eduardo Izacupe Coello</p>

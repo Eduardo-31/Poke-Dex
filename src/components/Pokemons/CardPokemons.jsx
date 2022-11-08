@@ -1,42 +1,43 @@
 import React from 'react'
 import cardPokemonApi from '../../hooks/cardPokemonApi'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setPokemonName } from '../../slices/namePokemon.slice'
 
-const CardPokemons = ({pokemon, search, isType, setSearchError}) => {
+import pokebola from '../img/poke.png'
 
-  const {pokemonCard, setPokemonCard} = cardPokemonApi(pokemon, search, setSearchError )
+const CardPokemons = ({pokemon, search, isType, setSearchError, submit, allPokemon}) => {
 
-  const dispatch = useDispatch()
+  const {pokemonCard, setPokemonCard} = cardPokemonApi(pokemon, search, setSearchError, submit)
+
+  const loaderPokemon = useSelector(state => state.loaderPokemon)
 
   const navigate = useNavigate();
 
    const info = () =>{
     navigate(`/pokedex/${pokemonCard?.name}`)
     }
-
     
+    if(loaderPokemon) {
+      return <article className='card-poke d-flex-card-loader-poke'>
+        <div className='card-loader-poke-img'>
+          <img src={pokebola} alt="image pokebola loading" />
+        </div>
+        <h4>Loading<span>...</span></h4>
+      </article>
+      }
 
-
-
-
-  return (  
+    if(pokemonCard?.sprites.other['official-artwork'].front_default || pokemonCard?.sprites.front_default){
+      return <article  className={isType ? `card-poke ${isType}`: `card-poke ${pokemonCard?.types[0].type.name}`}>
       
-    <>
-    {
-
-      pokemonCard?.sprites.other['official-artwork'].front_default &&
-      
-      
-      
-      <article  className={isType ? `card-poke ${isType}`: `card-poke ${pokemonCard?.types[0].type.name}`}>
-      { pokemonCard?.sprites.other['official-artwork'].front_default &&
-        <>
+        
       <div className='circle'>
       </div>
       <div className='card-img'>
-        <img src={pokemonCard?.sprites.other['official-artwork'].front_default} alt={`${pokemonCard?.name} undefinned `} />
+        
+
+        <img src={pokemonCard?.sprites.other['official-artwork'].front_default ? pokemonCard?.sprites.other['official-artwork'].front_default : pokemonCard?.sprites.front_default} alt={`${pokemonCard?.name} undefinned `} />
+        
       </div>
       <p className='card-name'> {pokemonCard?.name} </p>
       <p className='p-flex-types'>
@@ -46,12 +47,14 @@ const CardPokemons = ({pokemon, search, isType, setSearchError}) => {
       </p>
 
       <button onClick={info} className='btn-card'>See more</button>
-        </>
-      }
+        
+      
     </article>
-     }
-    </>
-  )
+    }
+
+    
+    
+  
 }
 
 export default CardPokemons

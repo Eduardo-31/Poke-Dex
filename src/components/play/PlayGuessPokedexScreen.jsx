@@ -12,6 +12,7 @@ import poke from '../img/poke.png'
 import { useNavigate } from 'react-router-dom'
 import GoToPokedex from './GoToPokedex'
 import Footer from '../footer/Footer'
+import LoadingPage from '../LoadingPage/LoadingPage'
 
 
 const PlayPokedex = () => {
@@ -50,9 +51,12 @@ const PlayPokedex = () => {
     const btnResponse = (e) => {
         e.preventDefault()
         
-        console.log(e.target.children[0].value.toLowerCase())
+        if(e.target.children[0].value.toLowerCase().replace(/\s/g,'').length === 0){
+            return false
+        }
+
         if(e.target.children[0].value.toLowerCase() === playPokedex?.name){ 
-            console.log('correcto')
+            //console.log('correcto')
             setIsRessCorrect(true)
             setIsActiveImage(true)
             setIsActiveNamePokemon(false)
@@ -72,7 +76,7 @@ const PlayPokedex = () => {
           
 
         }else {
-            console.log('incorrecto')
+            //console.log('incorrecto')
             setIsRessWrong(true)
             setTimeout(() => {
                 setIsRessWrong(false)
@@ -105,13 +109,17 @@ const PlayPokedex = () => {
 
 
   return (
+    
+        !playPokedex ?
+
+        <LoadingPage /> :
     <>
     <section className='container-play-pokedex'>
 
         
         <div className='card-title'>
             <img src={charmander1} alt="" />
-         <h6>¿QUIEN ES ESE POKEMON?</h6>
+         <h6>¿WHO IS THAT POKEMON?</h6>
             <img src={charmander1} alt="" />
 
         </div>
@@ -160,6 +168,7 @@ const PlayPokedex = () => {
         {
             isRessCorrect   && <div className='text-correct'><p>It's {playPokedex?.name} </p></div>
         }
+
 
         <form className='form-guess' onSubmit={btnResponse} id='Form'>
             <input className='form-guess-screnn-input' placeholder='Response' type="text" />

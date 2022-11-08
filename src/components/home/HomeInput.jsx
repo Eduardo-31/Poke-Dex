@@ -1,39 +1,49 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux';
-import { setUserName } from '../../slices/nameUser.slice';
 import { useNavigate } from 'react-router-dom';
 
-const HomeInput = ({setIsLogged}) => {
+const HomeInput = () => {
 
+    const [charactersMin, setCharactersMin] = useState(false)
+    const [charactersMax, setCharactersMax] = useState(false)
     
-    const name = useSelector(state => state.nameUser)
     const { register, handleSubmit, reset} = useForm()
     
     const navigate = useNavigate()
-    const dispatch = useDispatch()
-   
-
+    
     const submit = data => {
-      const name = data.userName
-      if(name.length > 2){
-        setIsLogged(true)
-        dispatch(setUserName(data.userName))
-        reset({userName: ''}),
-        navigate('/pokedex')
+      //const name = data.userName
+      const name = data.userName.replace(/\s/g,'').length
+      if(name > 2 && name <= 30){
         localStorage.setItem('name', data.userName)
+        reset({userName: ''})
+        navigate('/pokedex')
+      }else if(name > 30){
+        setCharactersMax(true)
+        setTimeout(() => {
+          setCharactersMax(false) 
+        }, 2000);
+      } else {
+        setCharactersMin(true)
+        setTimeout(() => {
+          setCharactersMin(false) 
+        }, 2000);
       }
 
     }
 
-    console.log(localStorage)
     
-
 
   return (
     <form className='form-home' onSubmit={handleSubmit(submit)}>
         <input placeholder='Your name...' type="text" {...register('userName')} />
         <button>Start</button>
+        {
+          charactersMin && <p className='form-character'>needs minimum 3 characters</p>
+        }
+        {
+          charactersMax && <p className='form-character'>max characters exceeded(30)</p>
+        }
     </form>
   )
 }

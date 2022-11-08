@@ -1,118 +1,51 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
-import cardPokemonApi from '../../hooks/cardPokemonApi'
-import { setPokemonName } from '../../slices/namePokemon.slice'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import Footer from '../footer/Footer'
-import pokdex from '../img/poke.png'
+import LoadingPage from '../LoadingPage/LoadingPage'
 import GoToPokedex from '../play/GoToPokedex'
+import PokemonError from './PokemonError'
 
 const PokemonInfo = () => {
 
   const [pokeInfo, setPokeInfo] = useState()
+  const [pokemonError, setPokemonError] = useState(false)
+  const [loadingPage, setLoadingPage] = useState(true)
 
-  const [pokeSpecies, setPokeSpecies] = useState()
-  const [evolutionUrl, setEvolutionUrl] = useState()
-
-  // estate Evolution
-  const [evolutionOne, setEvolutionOne] = useState()
-  const [evolutionTwo, setEvolutionTwo] = useState()
-  const [evolutionThree, setEvolutionThree] = useState()
-  
-
-  const navigate = useNavigate()
   const {name} = useParams()
-  
-  
-
-
-  
-  
-  
-  
+  const nameUser = useSelector(state => state.nameUser)
   
   const pokemonInfo = () => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${name}/`)
-    .then(res => setPokeInfo(res.data))
-    .catch(err => console.log(err))   
+    .then(res => {
+      setPokemonError(false)
+      setPokeInfo(res.data)
+      setLoadingPage(false)
+    })
+    .catch(err => {
+      setPokemonError(true)
+      console.log(err)
+      setLoadingPage(false)
+    })   
   }
   
   useEffect(() => {
+    //setPokeInfo(null)
+    setLoadingPage(true)
     pokemonInfo()
   }, [name])
   
-  
-  
-
-
-
-
-
-/*
-  useEffect(() => {
-    axios.get(pokeInfo?.species.url)
-    .then(res =>  setPokeSpecies(res.data))
-    .catch(err => console.log(err))
-    
-  }, [pokeInfo])
-  
-
-
-  useEffect(() => {
-    axios.get(pokeSpecies?.evolution_chain.url)
-              .then(res => setEvolutionUrl(res.data))
-              .catch(err => console.log(err))    
-  }, [pokeSpecies])
-  
-
-  
-  const one = () => {
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${evolutionUrl?.chain.species.name}/`)
-              .then(res => setEvolutionOne(res.data))
-              .catch(err => console.log(err))    
-  }
-
-// Peticion Evolution
-
-const two = () => {
-   
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${evolutionUrl?.chain.evolves_to[0].species.name}/`)
-            .then(res => setEvolutionTwo(res.data))
-            .catch(err => console.log(err))   
+if(loadingPage){
+  return <LoadingPage />
 }
 
 
-const three = () => {
-  
-  axios.get(`https://pokeapi.co/api/v2/pokemon/${evolutionUrl?.chain.evolves_to[0].evolves_to[0].species.name}/`)
-            .then(res => setEvolutionThree(res.data))
-            .catch(err => console.log(err))   
+  if(pokemonError) {
+    return <PokemonError />
   }
-  
-  useEffect(() => {
-    one()
-    two()
-    three() 
-  }, [evolutionUrl])
-
-  console.log(pokeInfo)
-  console.log(pokeInfo?.species.url)
-  console.log(pokeSpecies?.evolution_chain.url)
-  console.log(pokeSpecies)
-  console.log(evolutionUrl)
-  console.log(evolutionUrl)
-  console.log(evolutionUrl?.chain.evolves_to[0].species.name)
-  console.log(evolutionUrl?.chain.evolves_to[0].evolves_to[0].species.name)
-  console.log(evolutionOne)
-  console.log(evolutionTwo)
-  console.log(evolutionThree)
-*/
- 
-  console.log(pokeInfo)
-  return (
-    
-      <>
+  if(pokeInfo){
+  return <>
       <section className={`section-info ${pokeInfo?.types[0].type.name}`}>
 
 
@@ -120,7 +53,7 @@ const three = () => {
             <GoToPokedex />
         
           <div className='subtitle-poke-info'>
-            <h4> <span className='name-info'>{ localStorage.getItem('name')},</span> <span>{name}</span> is a {pokeInfo?.types.map((type, index) => (
+            <h4> <span className='name-info'>{localStorage.getItem('name')},</span> <span>{name}</span> is a {pokeInfo?.types.map((type, index) => (
               <span key={type.type.name}> 
               {index === 0 ? type.type.name + ' ': type.type.name} 
               </span>
@@ -132,7 +65,7 @@ const three = () => {
           <div className='d-flex'>
 
             <div className='card-info-img-cool'>
-              <div className='card-info-img'>
+              <div className={`card-info-img card-info-img-${pokeInfo?.types[0].type.name}`}>
                   <img src={pokeInfo?.sprites.other['official-artwork'].front_default} alt="" />
               </div>
             </div>
@@ -205,7 +138,8 @@ const three = () => {
       </section>
       <Footer />   
       </>
-    )
+    
+  }
 }
 
 export default PokemonInfo

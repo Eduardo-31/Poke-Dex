@@ -1,0 +1,160 @@
+.container-loading-page {
+    background: darkcyan;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('https://img.freepik.com/vector-gratis/escena-naturaleza-parque-vacio-noche-estilo-simple_1308-56066.jpg?w=826&t=st=1666919444~exp=1666920044~hmac=7543df9af23c572fe2d9ce3853919dbffc3fb79517b0e65bb5c4ecfd155493c0');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #F0DB4F;
+    background-color: #FFCB05;
+    background-color: #918BD3;
+    background-color: #03AFEF;
+    background: #8CC84B;
+    background: #000000;
+  }
+  
+  .loading-page {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .loading-page > p {
+    font-size: 1.2rem;
+    color: #3ed669;
+    font-weight: 500;
+    text-shadow: 0px 0px 15px #41ff77;
+    margin-top: -3px;
+  }
+  
+  .loading-page-img {
+    width: 200px;
+  }
+  
+  .loading-page-img img {
+    width: 100%;
+    filter: drop-shadow(0px 0px 3px #3ed669);
+  }
+  
+  
+  
+  .container {
+    height: 15px;
+    width: 230px;
+    border: 2px solid #3ed669;
+    background-color: #ffff;
+    box-shadow: 0px 0px 11px #3ed669;
+  }
+  
+  .progress {
+    height: 15px;
+    width: 0%;
+    background-color: green;
+    opacity: 0.8;
+    animation: progress 1.6s infinite alternate;
+  }
+  @keyframes progress {
+    0%{
+        width: 0%;
+    }
+    100%{
+        width: 100%;
+    }
+  }
+  
+  
+  @media (min-width: 490px) {
+  
+    .container {
+      width: 270px;
+      border: 3px solid #3ed669;
+    }
+  
+    .loading-page > p {
+      font-size: 1.3rem; 
+    }
+    
+    .loading-page-img {
+      width: 200px;
+    }
+  
+  }
+  
+  @media (min-width: 790px) {
+  
+    .container {
+      height: 20px;
+      width: 310px;
+    }
+  
+    .progress {
+      height: 20px;
+    }
+  
+    .loading-page > p {
+      font-size: 1.5rem;
+    }
+    
+    .loading-page-img {
+      width: 220px;
+    }
+  
+  }
+  
+  @media (min-width: 1200px) {
+  
+    .container {
+      height: 22px;
+      width: 365px;
+    }
+  
+    .progress {
+      height: 22px;
+    }
+  
+    .loading-page > p {
+      font-size: 1.7rem;
+    }
+    
+    .loading-page-img {
+      width: 240px;
+    }
+  
+    .loading-page-img img {
+      filter: drop-shadow(0px 0px 5px #3ed669);
+    }
+  
+  }
+  
+  
+  @media (min-width: 1650px) {
+  
+    .loading-page {
+      gap: 33px;
+    }
+  
+    .container {
+      width: 430px;
+      box-shadow: 0px 0px 17px #3ed669;
+    }
+  
+    .loading-page > p {
+      font-size: 1.8rem;
+      margin-top: -12px;
+    }
+    
+    .loading-page-img {
+      width: 270px;
+    }
+  
+    .loading-page-img img {
+      filter: drop-shadow(0px 0px 7px #3ed669);
+    }
+  
+  }
+  

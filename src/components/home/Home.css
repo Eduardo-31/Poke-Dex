@@ -7,7 +7,6 @@
 
 
 
-
 /* ====== Homeee ======== */
 
 
@@ -56,12 +55,20 @@
     height: 30%;
    }
   
-  .home p {
+  .text-home {
     font-size: 1rem;
     font-weight: 500; 
     color: white;
   }
-  
+
+  .form-character {
+    margin-top: 5px;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 500;
+    color: rgb(228, 227, 227);
+  }
+
   
   .subtitle-home {
     color: crimson;
@@ -120,6 +127,8 @@
   }
   
 
+  
+
 
 
 
@@ -144,7 +153,7 @@
         font-size: 1.85rem;
     }
 
-    .home p {
+    .text-home {
         font-size: 1.1rem;
     }
 
@@ -160,6 +169,11 @@
         min-width: 100px;
         border-radius: 0px 6px 6px 0px;
     }
+
+    .form-character {
+      font-size: 15px;  
+    }
+
 
 }
 
@@ -181,11 +195,14 @@
         font-size: 2rem;
     }
 
-    .home p {
+    .text-home {
         font-size: 1.2rem;
     }
 
-  
+    .form-character {
+      font-size: 1rem;
+      font-weight: 700;
+    }
 
     .form-home input {
         font-size: 16px;
