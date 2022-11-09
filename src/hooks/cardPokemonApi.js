@@ -9,7 +9,7 @@ const cardPokemonApi = (poke, search, searchError) => {
   const dispatch = useDispatch()
 
     const [pokemonCard, setPokemonCard] = useState()
-
+    
     useEffect(() => {
       if(!search){
         searchError(false)
@@ -25,6 +25,7 @@ const cardPokemonApi = (poke, search, searchError) => {
         })
         
       }else{
+        console.log('useEffect')
         setPokemonCard(null)
         dispatch(setLoaderPokemon(false))
         dispatch(setLoaderSearchPokemon(true))

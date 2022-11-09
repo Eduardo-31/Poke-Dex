@@ -42,16 +42,19 @@ const PokedexScreen = () => {
       if(e.target.children[0].value.replace(/\s/g,'').length){
         //dispatch(setLoaderSearchPokemon(true))
         e.preventDefault()
-        console.log('submit',e.target.children[0].value.toLowerCase())
-        setSearch(e.target.children[0].value.toLowerCase())
-        setSearchError(false)
-        setIsType(null)
-        setPokemons(null)
+        if(e.target.children[0].value.replace(/\s/g,'') !== search){
+          e.preventDefault() 
+          console.log('submit',e.target.children[0].value.toLowerCase())
+          setSearch(e.target.children[0].value.toLowerCase())
+          setSearchError(false)
+          setIsType(null)
+          setPokemons(null)
+          Form.reset()
+          dispatch(setLoaderSearchPokemon(false))
+          setIsType(xx.value = '')
+        }
         Form.reset()
-        dispatch(setLoaderSearchPokemon(false))
-        setIsType(xx.value = '')
       }
-
     }
     
 
@@ -104,6 +107,7 @@ const PokedexScreen = () => {
           setCurrentPage(1)
           //setPokemons(null)
           setIsType(xx.value = '')
+          Form.reset()
         }
       }
  
@@ -113,6 +117,7 @@ const PokedexScreen = () => {
       setIsType(xx.value)
       setPokemons()
       setSearch(null)
+      Form.reset()
     }
 
     const removeUser = () => {
@@ -226,7 +231,7 @@ const PokedexScreen = () => {
           search={search}
           isType={isType}
           setSearchError={setSearchError}
-          allPokemon={allPokemon}
+          submit={submit}
           />
         ))
     
@@ -234,7 +239,7 @@ const PokedexScreen = () => {
 
 
         {
-          search && <CardPokemons submit={submit} search={search} setSearchError={setSearchError} allPokemon={allPokemon} />
+          search && <CardPokemons submit={submit} search={search} setSearchError={setSearchError} />
         }      
           
         </section> 

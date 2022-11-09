@@ -6,9 +6,9 @@ import { setPokemonName } from '../../slices/namePokemon.slice'
 
 import pokebola from '../img/poke.png'
 
-const CardPokemons = ({pokemon, search, isType, setSearchError, submit, allPokemon}) => {
+const CardPokemons = ({pokemon, search, isType, setSearchError}) => {
 
-  const {pokemonCard, setPokemonCard} = cardPokemonApi(pokemon, search, setSearchError, submit)
+  const {pokemonCard, setPokemonCard} = cardPokemonApi(pokemon, search, setSearchError)
 
   const loaderPokemon = useSelector(state => state.loaderPokemon)
 
