@@ -25,7 +25,6 @@ const cardPokemonApi = (poke, search, searchError) => {
         })
         
       }else{
-        console.log('useEffect')
         setPokemonCard(null)
         dispatch(setLoaderPokemon(false))
         dispatch(setLoaderSearchPokemon(true))

@@ -36,15 +36,13 @@ const PokedexScreen = () => {
   const loadingSearchPokemon = useSelector(state => state.loaderSearch)
   const loaderPokemons = useSelector(state => state.loaderPokemon)
   
-    //console.log('estate search loading: ',loadingSearchPokemon)
     const submit = (e) => {
       e.preventDefault()
       if(e.target.children[0].value.replace(/\s/g,'').length){
         //dispatch(setLoaderSearchPokemon(true))
         e.preventDefault()
-        if(e.target.children[0].value.replace(/\s/g,'') !== search){
-          e.preventDefault() 
-          console.log('submit',e.target.children[0].value.toLowerCase())
+        if(e.target.children[0].value.toLowerCase() !== search){
+          e.preventDefault()
           setSearch(e.target.children[0].value.toLowerCase())
           setSearchError(false)
           setIsType(null)

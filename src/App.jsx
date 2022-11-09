@@ -16,17 +16,12 @@ import Error404 from './components/404/Error404'
 
 function App() {
 
-  const [isLogged, setIsLogged] = useState(false)
-
-
   return (
     <div className="App">
       
       <Routes>
-        <Route path={'/'} element={<Home  
-          setIsLogged={setIsLogged} />} />
-        <Route element={<ProtectedRoutes
-          isLogged={isLogged} />}>
+        <Route path={'/'} element={<Home />} />
+        <Route element={<ProtectedRoutes />}>
           <Route path={'/pokedex'}>
             <Route index element={<PokedexScreen />} />
             <Route path={':name'} element={<PokemonInfo />} />
