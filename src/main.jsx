@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client'
 // Styles CSS
 import App from './App'
 import './index.css'
-import './components/footer/StyleFooter.css'
-//import './components/play/Styles/PlayStartHome.css'
 import './components/Pokemons/pagination/Pagination.css'
 import './components/404/Error404.css'
 import './components/home/Home.css'
