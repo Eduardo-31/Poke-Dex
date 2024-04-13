@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/PlayGameOver.css'
-import pokebola from '../img/pixelated-pokebola.png'
+import pokebola from './pixelated-pokebola.png'
 
 
 
