@@ -17,6 +17,7 @@ import PlayGuessResponseOptions from './PlayGuessResponseOptions'
 import GameMode from './GameMode'
 import PlayGuessPokemon from './PlayGuessPokemon'
 
+import './styles/PlayGuessPokedexScreen.css'
 
 const shiftLimit = 20
 const difficulty = {

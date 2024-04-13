@@ -1,6 +1,7 @@
 import React from 'react'
 import pokebola from '../img/pixelated-pokebola.png'
-import './styles/PlayGameOver.css'
+
+
 
 const arrNote = ['very bad', 'bad', 'normal', 'good', 'very good']
 
