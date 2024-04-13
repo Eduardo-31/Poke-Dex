@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import title from '../img/pokedex.png.png'
 import imagePlayHome from '../img/bg-play-home.jpg'
-import './styles/PlayHome.css'
 
 const PlayHome = () => {
 
