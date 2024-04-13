@@ -1,5 +1,5 @@
 import React from 'react'
-import './PlayHome.css'
+import './styles/PlayHome.css'
 import { useNavigate } from 'react-router-dom'
 import title from '../img/pokedex.png.png'
 import imagePlayHome from '../img/bg-play-home.jpg'
