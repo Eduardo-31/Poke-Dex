@@ -2,9 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import title from '../img/pokedex.png.png'
 import imagePlayHome from '../img/bg-play-home.jpg'
-import './styles/PlayStartHome.css'
+import './styles/PlayHome.css'
 
-const PlayStart = () => {
+const PlayHome = () => {
 
     const navigate = useNavigate()
 
@@ -28,4 +28,4 @@ const PlayStart = () => {
   )
 }
 
-export default PlayStart
+export default PlayHome   
