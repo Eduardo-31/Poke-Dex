@@ -8,7 +8,7 @@ import PokedexScreen from './components/Pokemons/PokedexScreen'
 import PokemonInfo from './components/Pokemons/PokemonInfo'
 import Footer from './components/footer/Footer'
 import ProtectedRoutes from './components/ProtectedRoutes.jsx/ProtectedRoutes'
-import PlayGuessPokedexScreen from './components/play/PlayGuessPokedexScreen'
+import PlayGuessScreen from './components/play/guess/PlayGuessScreen'
 import PlayStart from './components/play/PlayStartHome'
 import Error404 from './components/404/Error404'
 
@@ -27,7 +27,7 @@ function App() {
             <Route path={':name'} element={<PokemonInfo />} />
             <Route path='play'>
               <Route index element={<PlayStart />} />
-              <Route path={'guess'} element={<PlayGuessPokedexScreen />} />
+              <Route path={'guess'} element={<PlayGuessScreen />} />
             </Route>
           </Route>
         </Route>  

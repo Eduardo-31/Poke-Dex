@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import getAllPokedexApi from '../../hooks/getAllPokedexApi'
@@ -7,67 +7,28 @@ import Footer from '../footer/Footer'
 import Pagination from './pagination/Pagination'
 import './SearchLoading.css'
 
-import poketitle from '../img/timg-title.png'
-import psyduck from '../img/2-psyduck.png'
-import pokebola from '../img/poke.png'
-import { setLoaderSearchPokemon } from '../../slices/loaderSearchPokemon.slice'
-import { setLoaderPokemon } from '../../slices/loaderPokemon.slice'
+import PokemonNotFound from './PokemonNotFound'
+import PokemonHeader from './PokemonHeader'
+import pikachuRunning from '../img/pikachu-running.gif'
+
 
 
 
 const PokedexScreen = () => {
   
-  const arrayTypes = [
-    "normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water","grass","electric","psychic", "ice", "dragon", "dark", "fairy"]
   
-  
-  const [search, setSearch] = useState()
-  const [isType, setIsType] = useState()
-  const [searchError, setSearchError] = useState(false)
-  
-  const {pokemons, setPokemons} = getAllPokedexApi(isType,setSearchError,search, setIsType)
+  const [search, setSearch] = useState('')
+  const [type, setType] = useState('')
+  const [loadingPokemons, setloadingPokemons] = useState(true)
   
   
   const [currentPage, setCurrentPage] = useState(1)
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const loadingSearchPokemon = useSelector(state => state.loaderSearch)
-  const loaderPokemons = useSelector(state => state.loaderPokemon)
-  
-    const submit = (e) => {
-      e.preventDefault()
-      if(e.target.children[0].value.replace(/\s/g,'').length){
-        //dispatch(setLoaderSearchPokemon(true))
-        e.preventDefault()
-        if(e.target.children[0].value.toLowerCase() !== search){
-          e.preventDefault()
-          setSearch(e.target.children[0].value.toLowerCase())
-          setSearchError(false)
-          setIsType(null)
-          setPokemons(null)
-          Form.reset()
-          dispatch(setLoaderSearchPokemon(false))
-          setIsType(xx.value = '')
-        }
-        Form.reset()
-      }
-    }
-    
+  const {pokemons, setPokemons} = getAllPokedexApi(type, search, setloadingPokemons)
+  const searchIconRef = useRef()
 
 
-
-    
-    const goToMiniPlay = () => {
-      navigate('/pokedex/play')
-    }
-
-
-
-    
     // logic Pagination
-
     
     let arrayPokemon = []
     const pokemonPerPage = 24
@@ -76,181 +37,131 @@ const PokedexScreen = () => {
     } else {
         const lastpokemon = currentPage * pokemonPerPage
         arrayPokemon = pokemons?.slice(lastpokemon - pokemonPerPage, lastpokemon)
-      }
+    }
       
-      let arrayPages = []
-      let quantityPages = Math.ceil(pokemons?.length / pokemonPerPage) // 11 = cantidad paginas máximas
-      const pagesPerBlock = 5
-      let currentBlock = Math.ceil(currentPage / pagesPerBlock) // 2 = segundo bloque
-      // Analiza si estamos en el último(true) o no(false)
-      if(currentBlock * pagesPerBlock >= quantityPages){
-        // Cuando es el último bloque
-        for(let i = currentBlock * pagesPerBlock - pagesPerBlock + 1; i <= quantityPages ;i++) {
-          arrayPages.push(i)
-        }
-      } else {
-        // cuando no es el último bloque
-        for(let i = currentBlock * pagesPerBlock - pagesPerBlock + 1; i <= currentBlock * pagesPerBlock;i++){
-          arrayPages.push(i)
-        }
+    let arrayPages = []
+    let quantityPages = Math.ceil(pokemons?.length / pokemonPerPage) // 11 = cantidad paginas máximas
+    const pagesPerBlock = 5
+    let currentBlock = Math.ceil(currentPage / pagesPerBlock) // 2 = segundo bloque
+    // Analiza si estamos en el último(true) o no(false)
+    if(currentBlock * pagesPerBlock >= quantityPages){
+      // Cuando es el último bloque
+      for(let i = currentBlock * pagesPerBlock - pagesPerBlock + 1; i <= quantityPages ;i++) {
+        arrayPages.push(i)
       }
-      
-      const allPokemon = () => {
-        if(!loadingSearchPokemon && !loaderPokemons){
-          setSearchError(false)
-          dispatch(setLoaderPokemon(false))
-          dispatch(setLoaderSearchPokemon(false))
-          setIsType(null)
-          setSearch(null)
-          setCurrentPage(1)
-          //setPokemons(null)
-          setIsType(xx.value = '')
-          Form.reset()
-        }
+    } else {
+      // cuando no es el último bloque
+      for(let i = currentBlock * pagesPerBlock - pagesPerBlock + 1; i <= currentBlock * pagesPerBlock;i++){
+        arrayPages.push(i)
       }
- 
-      
-    const changeType = () => {
-      setCurrentPage(1)
-      setIsType(xx.value)
-      setPokemons()
-      setSearch(null)
-      Form.reset()
     }
 
-    const removeUser = () => {
-      localStorage.removeItem('name')
-      navigate('/')
+
+    const allPokemon = () => {
+      if(!loadingPokemons){
+        setCurrentPage(1)
+        setType('')
+        if(search){
+          setSearch('')
+          searchIconRef.current.classList.remove('form-pokedex__icon-isShow')
+        }
+      }
     }
+ 
+    const changeType = (value) => {
+      console.log('change')
+      setloadingPokemons(true)
+      setType(value)
+      setSearch('')
+      setCurrentPage(1)
+    }
+
+    const handleSearch = (e) => {
+      const value = e.target.value
+      if(value.replace(/\s/g,'').length){
+        if(pokemons?.length != 0){
+          setloadingPokemons(true)
+        }
+        setSearch(value.toLowerCase())
+        setCurrentPage(1)
+      }
+      
+      if(search && value.toLowerCase() == ''){
+        setloadingPokemons(true)
+        setSearch('')
+      }
+    }
+
+    console.log('renderizado')
+    console.log(pokemons)
+    console.log(arrayPokemon)
 
   return (
-    <div>
-      <div className='pokedex-Screen-container'>
-
+    <div onClick={() => !search && searchIconRef.current.classList.remove('form-pokedex__icon-isShow')}>
+      <div className='pokedex-screen-container'>
       
-      <header className='container-header'>
-        <div style={{maxWidth: '1670px', margin:'0 auto', position: 'relative'}}>
+      <PokemonHeader 
+        allPokemon={allPokemon}
+        changeType={changeType}
+        handleSearch={handleSearch}
+        type={type}
+        search={search}
+        searchIconRef={searchIconRef}
+      />
 
-        <div className='img-title-header'>
-        <img src={poketitle} alt="title.." />
-        </div>    
-        <section className='subtitle-header'>
-        <p><span>Welcome</span> <span className='name-header'> {localStorage.getItem('name')}, </span> here you can find your favorite pokemon. </p>
-        </section>
-
-        <form className='form-header-pokedex' onSubmit={submit} id='Form'>
-          <input className='input-form' type="text" />
-          <button className='btn-form'>Buscar</button>
-        </form>
-
-        <div className='container-select'>
-          
-
-
-          <select className='select' onChange={changeType} id="xx">
-         { /*<option value={'dwqqwd'}>search by type</option>*/}
-            
-
-          {
-            
-            arrayTypes.map(arrayType => (
-              <option className='option' key={arrayType}>
-              {arrayType}
-            </option>))
-      
-    }
-        
-          </select>
-          {       
-            isType || search ? <button className='btn-allpokemon' onClick={allPokemon}>All Pokedex</button> : undefined
-          }
-          <div className='pokebola-header'>
-            <img src={pokebola} alt="" />
-          </div>
-
-        </div>
-        </div>
-
-        <button onClick={goToMiniPlay} className='icon-to-play'><i className="fa-brands fa-playstation"></i></button>
-        <button onClick={removeUser} className='icon-exit'><i className="fa-solid fa-right-from-bracket"></i></button>
-        
-      </header>
-
-
-      <main className={search && 'padding-60'}>
+      <main className={(loadingPokemons || (pokemons?.length <= pokemonPerPage)) ? 'padding-60' : undefined}>
 
         {
-          searchError   &&  
-          <div className='card-search_error'>
-        <div className='img-search_error'>
-            <img src='https://i.gifer.com/8R5e.gif' alt="image error search" />
-        </div>
-        <p className='search-error_bold'>Sorry, pokemon not found</p>
-        <p>choose another pokemon trainer, you can also choose by type</p>
-          </div>        
+          (!pokemons?.length && !loadingPokemons && search) &&  
+          <PokemonNotFound />     
         }
 
-        {
-          loadingSearchPokemon && 
-          <div className='loading-search'>
+          <div style={{display: `${loadingPokemons ? 'flex' : 'none'}`}} className='loading-search'>
             <div style={{height: '85%'}}>
               <div className='loading-search-img'>
-                <img src='http://img4.wikia.nocookie.net/__cb20140430000041/fantendo/images/4/48/Pikachu_running_animation_by_cadetderp-d5407a9.gif' alt="loading pokebola" />
+                <img src={pikachuRunning} alt="pikachu image" loading='lazy'/>
               </div>
               <p>Loading...</p>
             </div>
           </div>
-        
-        }
 
 
-        { arrayPokemon &&
-        <Pagination 
-        currentPage={currentPage} 
-        setCurrentPage={setCurrentPage} 
-        quantityPages={quantityPages}  
-        arrayPages={arrayPages}
-        currentBlock={currentBlock}
-        pagesPerBlock={pagesPerBlock}
-        isType={isType}
-        />
+        { (pokemons?.length > pokemonPerPage) && !loadingPokemons &&
+            <Pagination 
+            currentPage={currentPage} 
+            setCurrentPage={setCurrentPage} 
+            quantityPages={quantityPages}  
+            arrayPages={arrayPages}
+            currentBlock={currentBlock}
+            pagesPerBlock={pagesPerBlock}
+            type={type}
+          />
         }
 
         <section className='container-card'>
 
-        
-        {
-          
-          
-          arrayPokemon?.map(pokemon => (
-          <CardPokemons 
-          key={!isType === true ? pokemon.url : pokemon.pokemon.url} 
-          pokemon={!isType === true ? pokemon.url : pokemon.pokemon.url} 
-          search={search}
-          isType={isType}
-          setSearchError={setSearchError}
-          submit={submit}
-          />
-        ))
-    
+        {  
+          !loadingPokemons && arrayPokemon?.map(pokemon => (
+            <CardPokemons 
+            key={type ? pokemon.pokemon.url : pokemon.url } 
+            pokemon={type ? pokemon.pokemon.url : pokemon.url }
+            search={search}
+            type={type}
+            />
+          ))
         }
 
-
-        {
-          search && <CardPokemons submit={submit} search={search} setSearchError={setSearchError} />
-        }      
-          
         </section> 
 
-        { arrayPokemon &&
-        <Pagination 
-        currentPage={currentPage} 
-        setCurrentPage={setCurrentPage} 
-        quantityPages={quantityPages}  
-        arrayPages={arrayPages}
-        currentBlock={currentBlock}
-        pagesPerBlock={pagesPerBlock}
-        />
+        { (pokemons?.length > pokemonPerPage) && !loadingPokemons &&
+            <Pagination 
+            currentPage={currentPage} 
+            setCurrentPage={setCurrentPage} 
+            quantityPages={quantityPages}  
+            arrayPages={arrayPages}
+            currentBlock={currentBlock}
+            pagesPerBlock={pagesPerBlock}
+          />
         }
        
       </main>

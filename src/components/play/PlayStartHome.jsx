@@ -1,7 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import title from '../img/pokedex.png.png'
-import './Styles/PlayStartHome.css'
+import './styles/PlayStartHome.css'
+import imagePlayHome from '../img/bg-play-home.jpg'
 
 const PlayStart = () => {
 
@@ -12,7 +13,6 @@ const PlayStart = () => {
         
         <div className='section-play'>
         <p className='title-play'>minigames</p>
-
             <img src={title} alt="" />
         <div className='portada-img-play'>
             <img src="https://i.ytimg.com/vi/dKY7TBt-dd4/maxresdefault.jpg" alt="" />

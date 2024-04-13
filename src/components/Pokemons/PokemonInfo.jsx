@@ -31,19 +31,18 @@ const PokemonInfo = () => {
   }
   
   useEffect(() => {
-    //setPokeInfo(null)
     setLoadingPage(true)
     pokemonInfo()
   }, [name])
   
-if(loadingPage){
-  return <LoadingPage />
-}
-
+  if(loadingPage){
+    return <LoadingPage />
+  }
 
   if(pokemonError) {
     return <PokemonError />
   }
+  
   if(pokeInfo){
   return <>
       <section className={`section-info ${pokeInfo?.types[0].type.name}`}>
@@ -59,7 +58,6 @@ if(loadingPage){
               </span>
               ))} type Pokemon
             </h4>
-            {/*<img src={pokdex} alt="" />*/}
           </div>
           
           <div className='d-flex'>

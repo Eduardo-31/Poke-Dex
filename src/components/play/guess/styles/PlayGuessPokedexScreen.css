@@ -16,11 +16,12 @@
   
   .section-play-pokedex {
     box-sizing: border-box;
-    width: 90%;
+    width: 94%;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    padding-bottom: 40px; 
+    padding-bottom: 80px;
+    max-width: 1010px; 
   }
   
   
@@ -89,7 +90,7 @@
     border-radius: 5px;
   }
   
-  
+
   
   .position-img {
     position: absolute;
@@ -99,7 +100,6 @@
     transform: scale(0.3);
     filter: brightness(2%);
   }
-  
   
   
   .img-oculta {
@@ -112,7 +112,26 @@
     transition:  1300ms;
     background: transparent;
   }
-  
+
+  .confeti-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    display: none;
+  }
+
+  .confeti-image-isShow {
+    display: initial;
+    z-index: 9;
+  }
+
+
+
+    
   .img-active {
     left: -23%;
     transform: scale(0.3);
@@ -122,18 +141,14 @@
   
   .play-pokemon-name {
     position: absolute; 
-   
     top: -25%;
     left: 15%;
-    
     font-size: 10px;
     font-weight: 900;
     text-transform: capitalize;
     color: #fffb00;
     text-shadow: 1px 0px 1px rgb(37, 37, 255);
-
     -webkit-text-stroke: 0.4px rgba(50, 53, 248, 0.863);
-
     transition:  1300ms; 
   }
 
@@ -142,7 +157,6 @@
     left: 15%; 
     transition:  1400ms; 
   }
-
 
 
   
@@ -170,8 +184,116 @@
     top: 0;
     right: 0;
     flex-direction: row-reverse;
+    z-index: 9;
   }
   
+
+
+  /* ======== geme Mode ======= */
+
+  .play-pokedex__setting {
+    background-color: #302b63;
+    /*position: absolute;
+    top: 0;
+    left: 0;*/
+    width: 100%;
+    height: 100%;
+    height: 340px;
+    object-fit: cover;
+    background: url('../../../img/bg-play-guess-start.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Share Tech Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .play-pokedex__setting__option {
+    outline: solid 2px  #000000;
+    border: solid 1px  #ffffff;
+    width: max-content;
+    backdrop-filter: blur(2.5px);
+    border-radius: 4px;
+    padding: 4px 0;
+  }
+  
+  .play-pokedex__setting__option__items {
+    text-shadow: 0px 0px 5px black;
+    font-size: 1rem;
+    padding: 8px 17px 8px 10px;
+    display: flex;
+    gap: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .play-pokedex__setting__option__items:hover {
+    background-color: rgba(235, 232, 232, 0.356);
+  }
+  
+  .play-pokedex__setting__option__items-plus {
+    padding: 8px 32px 8px 32px;
+  }
+  
+  .play-pokedex__setting__option__items__icon {
+    font-size: 1rem;
+  }
+  
+  .play-pokedex__setting__text {
+    outline: solid 2px  #000000;
+    border: solid 1px  #ffffff;
+    padding: 8px 12px;
+    text-align: left;
+    text-shadow: 0px 0px 10px black;
+    font-size: 1rem;
+    width: min(90%, 370px);
+    backdrop-filter: blur(2.5px);
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  
+  
+
+  .play-pokedex__response-options {
+    display: grid;
+    grid-template-columns: calc(50% - 9px) calc(50% - 9px);
+    width: 100%;
+    box-sizing: unset;
+    padding: 0;
+    gap: 18px;
+    margin: 22px auto;
+  }
+  
+  .play-pokedex__response-options__items {
+    border: solid 1px white;
+    padding: 9px;
+    border-radius: 5px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  
+  .play-pokedex__response-options__items-invalid {
+    border: solid 1px crimson;
+    box-shadow: 0px 0px 7px rgb(255, 24, 70);
+  }
+  .play-pokedex__response-options__items-valid {
+    border: solid 1px #98ce4c;
+    box-shadow: 0px 0px 7px #95ff00;
+  }
+
+
+  
+  /* ========= form ======== */
   
   .form-guess {
     box-sizing: border-box;
@@ -277,12 +399,11 @@
   .card-ress-correct-play {
     box-sizing: border-box;
     position: absolute;
-    top: 20%;
-    left: 120%;
-    transition: ease-in-out 1.5s;
-   
-    background: brown;
-    width: 110px;
+    background: url('../../../img/bg-play-modal-correct.avif');
+    top: 40%;
+    right: -150px;
+    transform: translateY(-40%);
+    width: 142px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -291,19 +412,23 @@
     border-radius: 5px;
     text-shadow: 0px 0px  3px black;
     box-shadow: 0px 1px 2px 1px rgb(54, 54, 54);
-    transition: ease-in-out 1.3s;
+    outline: solid 2px rgb(255, 255, 255);
+    border: solid 3px rgb(0, 0, 0);
+    transition: transform, right ease-in-out 1.3s;
   }
   
   .card-ress-correct-play_active {
-    left: 32%;
-    transition: ease-in-out 1.3s;
+    right: calc(50% - 72.5px);
+    transition: transform, right ease-in-out 1.3s;
   }
 
   .card-ress-correct-play p {
     font-family: 'Inconsolata', monospace;
+    font-family: 'Share Tech Mono', monospace;
     color: rgb(255, 255, 255);
-    font-weight: 800;
+    font-weight: 900;
     font-size: 10px;
+    font-size: .7rem;
   }
   
   .card-img-ress-correct {
@@ -317,12 +442,12 @@
   
   .ress-correct-icon {
     position: absolute;
-    top: 2%;
-    right: 5%;
-    color: 	#00ff40e7;  
+    top: 5%;
+    right: 6%;
+    color: #93e91c;
   }
   .ress-correct-icon i {
-    font-size: 14px;
+    font-size: 1.25rem
   }
 
 
@@ -331,36 +456,40 @@
   .card-ress-incorrect-play {
     box-sizing: border-box;
     position: absolute;
-    top: 10%;
-    left: 120%;
-    width: 110px;
+    background: url('../../../img/bg-play-modal-incorrect.jpg');
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px 5px;
+    top: 45%;
+    transform: translateY(-45%);
+    right: -150px;
+    width: 140px;
+    padding: 10px 7px;
     border-radius: 5px;
     text-shadow: 0px 0px  3px black;
     box-shadow: 0px 1px 2px 1px rgb(54, 54, 54);
-    transition: ease-in-out 1.3s;
-    background: #181818;
-    z-index: 30
+    z-index: 30;
+    background-size: cover;
+    outline: solid 2px rgb(255, 255, 255);
+    border: solid 3px rgb(0, 0, 0);
+    transition: transform, right ease-in-out 1.3s;
   }
   
   .card-ress-incorrect-play_active {
-    left: 31%;
-    transition: ease-in-out 1.3s;
+    transition: transform, right ease-in-out 1.3s;
+    right: calc(50% - 72.5px);
   }
 
   .card-ress-incorrect-play p {
     font-family: 'Inconsolata', monospace;
     color: rgb(255, 255, 255);
     font-weight: 800;
-    font-size: 10px;
+    font-size: .7rem;
   }
   
   .card-img-ress-incorrect {
-    width: 40%;
+    width: 41%;
   }
   
   .card-img-ress-incorrect img {
@@ -370,12 +499,12 @@
   
   .ress-incorrect-icon {
     position: absolute;
-    top: 3%;
+    top: 5%;
     right: 7%;
     color: 	crimson;  
   }
   .ress-incorrect-icon i {
-    font-size: 15px;
+    font-size: 1.25rem;
   }
 
 
@@ -403,6 +532,20 @@
 
 
 
+  .play-pokedex__shifts {
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    font-family: 'Share Tech Mono', monospace;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    text-shadow: 0px 0px 3px black;
+    -webkit-text-stroke: 0.5px rgba(13, 13, 14, 0.863);
+  }
+
 
 /* ------- @Media ------- */
 
@@ -415,25 +558,6 @@
 
 
 @media (min-width: 320px){
-
-  
-  .card-ress-correct-play {
-    top: 21%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 32.4%;
-  }
-
-
-  .card-ress-incorrect-play {
-    top: 12.5%;
-  }
-  
-  .card-ress-incorrect-play_active {
-    left: 31%;
-  }
-
 
   .play-pokemon-name {
     font-size: 12px;
@@ -472,39 +596,6 @@
 
 @media (min-width: 350px){
 
-  .card-ress-correct-play {
-    top: 23%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 35%;
-  }
-
-  .ress-correct-icon {
-    top: 3%;
-    right: 5%;
-  }
-
-  .ress-correct-icon i {
-    font-size: 16px;
-  }
-
-  
-
-  .card-ress-incorrect-play {
-    top: 15%;
-    left: 120%;
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 34%;
-  }
-
-  .ress-incorrect-icon i {
-    font-size: 16px;
-  }
-  
   .card-title h6 {
     font-size: 14px;
     font-weight: 400; 
@@ -515,27 +606,6 @@
 
 
 @media (min-width: 370px){
-
-
-  .card-ress-correct-play {
-    top: 24.3%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 34.1%;
-  }
-
-  
-  .card-ress-incorrect-play {
-    top: 16%;
-    /*left: 36%;*/
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 36%;
-    transition: ease-in-out 1.3s;
-  }
 
   .play-pokemon-name-active {
     font-size: 13px;
@@ -550,25 +620,6 @@
 
 
 @media (min-width: 390px){
-
-
-  .card-ress-correct-play {
-    top: 25%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 35%;
-  }
-
-
-  .card-ress-incorrect-play {
-    top: 17.5%;
-  }
-  
-  .card-ress-incorrect-play_active {
-    left: 36.5%;  
-  }
-
   
   .card-title {
     height: 58px;
@@ -596,24 +647,6 @@
 
 
 @media (min-width: 400px){
-
-
-  .card-ress-correct-play {
-    top: 27%;
-  }
-
-
-  .card-ress-incorrect-play {
-    top: 20%;
-    left: 120%;
-    /*left: 36.5%;*/
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 36.5%;
-    transition: ease-in-out 1.3s;
-  }
 
   .play-pokemon-name {
     font-size: 15px;
@@ -643,34 +676,10 @@
     font-size: 12px;
   }
 
-
 }
 
 
 @media (min-width: 425px){
-
-
-  .card-ress-correct-play {
-    top: 28%;
-    left: 120%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 37%;
-  }
-
-
-  .card-ress-incorrect-play {
-    top: 21%;
-    left: 120%;
-    /*left: 37%;*/
-    padding: 6px 7px;
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 37%;
-  }
 
   .play-pokedex-subtitle{
     font-size: 17px;
@@ -698,31 +707,6 @@
 
 @media (min-width: 460px){
 
-
-  .card-ress-correct-play {
-    top: 30.5%;
-    left: 120%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 38%;
-  }
-
-
-
-  .card-ress-incorrect-play {
-    top: 24%;
-    left: 120%;
-    /*left: 38.5%;*/
-    width: 120px;
-    padding: 6px 8px;
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 38.5%;
-  }
-
   .play-pokemon-name{
     font-size: 16px;
   }
@@ -735,44 +719,23 @@
     width: 55%;
   }
 
+  .play-pokedex__shifts {
+    top: 7px;
+    left: 15px;
+    font-size: 1.3rem;
+  }
+
 }
 
 
 @media (min-width: 520px){
 
-
-  .card-ress-correct-play {
-    top: 28%;
-    left: 120%;
-    width: 130px;
-    padding: 10px 7px;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 37%;
-  }
-  
-  .card-ress-correct-play p {
-    font-size: 11px;
-  }
-  
   .card-img-ress-correct {
     width: 60%;
   }
   
 
-  .card-ress-incorrect-play {
-    top: 26%;
-    left: 120%;
-    padding: 7px 8px;
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 39%;
-  }
 
-  
   .play-pokemon-name{
     font-size: 17px;
   }
@@ -790,26 +753,6 @@
 
 
 @media (min-width: 550px){
-
-  
-  .card-ress-correct-play {
-    top: 30%;
-  }
-
-  
-
-  .card-ress-incorrect-play {
-    top: 26%;
-    left: 120%;
-    /*left: 41%;*/
-    width: 125px;
-
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 41%;
-  }
 
   .card-ress-incorrect-play p{
     line-height: 1.3 ;
@@ -848,18 +791,7 @@
 
 
 
-  .card-ress-incorrect-play {
-    top: 26%;
-    left: 120%;
-    /*left: 39%;*/
-    width: 130px;
 
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 39%;
-  }
 
   .play-pokemon-name {
     font-size: 20px;
@@ -894,24 +826,39 @@
   .play-text-subtitle {
     font-size: 20px;
   }
+
+
   
-  .card-ress-correct-play {
-    top: 26%;
-    left: 120%;
-    width: 155px;
+  .play-pokedex__setting {
+    height: 380px
   }
 
+  .play-pokedex__setting__text {
+    width: min(82%, 460px);
+  }
+
+
+  
+  
+  .card-ress-correct-play {
+    top: 50%;
+    transform: translateY(-81%);
+    width: 175px;
+    right: -185px;
+  }
+  
   .card-ress-correct-play_active {
-    left: 35%;
+    right: calc(29% - 72.5px);
   }
 
   .card-ress-correct-play p{
     font-size: 14px;
+    font-size: .8rem;
   }
   
   
   .card-img-ress-correct {
-    width: 65%;
+      width: 62%;
   }
 
   .ress-correct-icon {
@@ -920,38 +867,35 @@
   }
   
   .ress-correct-icon i {
-    font-size: 19px;
+    font-size: 1.4rem;
   }
-  
-  
-  
   
 
   .card-ress-incorrect-play {
-    top: 20%;
+    right: -178px;
     width: 175px;
-    /*left: 41%;*/
-    padding: 10px 10px;
-    
   }
   
   .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 32.5%;
-    
+    right: calc(50% - 90.5px);
   }
   
+  
+ 
+  
   .card-ress-incorrect-play p {
-    font-size: 13px;
+    font-size: .8rem
   }
   
   .ress-incorrect-icon {
     top: 7%;
     right: 9%;
   }
+
   .ress-incorrect-icon i {
-    font-size: 21px;
+    font-size: 1.3rem;
   }
+
 
   .section-play-pokedex {
     width: 80%;
@@ -1009,35 +953,18 @@
   }
 
 
+  
+  .play-pokedex__shifts {
+    top: 10px;
+    left: 20px;
+    font-size: 1.5rem;
+  }
 
 
 }
 
 
 
-
-@media (min-width: 680px){
-  .card-ress-correct-play {
-    top: 28%;
-  }
-
-  .card-ress-correct-play_active {
-    left: 37.5%;
-  }
-
-  .card-ress-incorrect-play {
-    top: 23%;
-    left: 120%;
-    /*left: 41%;*/  
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/
-    left: 36%;  
-  }
-  
-
-}
 
 
 @media (min-width: 820px){
@@ -1058,45 +985,82 @@
     width: 70%;
   }
 
+
+ 
   
+  .play-pokedex__setting {
+    height: 420px
+  }
+
+  .play-pokedex__setting__text {
+    width: min(82%, 460px);
+  }
+  
+  .play-pokedex__setting__option__items__icon {
+    font-size: 1.1rem;
+  }
+
+  .play-pokedex__setting__option__items {
+    font-size: 1.1rem;
+    gap: 9px;
+    padding: 10px 22px 10px 16px;
+  }
+
+  .play-pokedex__setting__option__items-plus {
+    padding: 9px 38px 9px 38px;
+  }
+
+  .play-pokedex__setting__text {
+    font-size: 1.1rem;
+    padding: 12px 15px;
+  }
+
+
+  
+  .play-pokedex__response-options {
+    grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+    gap: 20px;
+  }
+
+  .play-pokedex__response-options {
+    margin-top: 30px;
+  }
+
+  .play-pokedex__response-options__items {
+    font-weight: 600;
+    padding: 11px;
+  }
+
   .card-ress-correct-play {
-    top: 28%;
-    width: 175px;
-    padding: 12px 13px;
+    width: 190px;
+    right: -200px
   }
 
   .card-ress-correct-play_active {
-    left: 36.5%;
+    right: calc(28% - 72.5px);
   }
 
-  .ress-correct-icon {
-    top: 8%;
-    right: 7%
+  .card-ress-correct-play p {
+    font-size: .85rem;
   }
+
   .ress-correct-icon i {
-    font-size: 24px;
+    font-size: 1.5rem
   }
 
+  
 
-  .card-ress-incorrect-play {
-    top: 24%;
-    left: 120%;
-    /*left: 41%;*/  
-    width: 190px;
-    padding: 15px 12px;
-  }
-  
-  .card-ress-incorrect-play_active {
-    /*left: 31%;*/ 
-    left: 36.5%;
-  }
-  
+ 
   .ress-incorrect-icon {
     top: 9%;
     right: 10%
   }
-  .ress-incorrect-icon i {
-    font-size: 25px;
+
+
+  .play-pokedex__shifts {
+    top: 10px;
+    left: 20px;
+    font-size: 1.6rem;
   }
 
 }
@@ -1123,7 +1087,7 @@
 
 
   .section-play-pokedex {
-    width: 60%;
+    width: 66%;
   }
 
   .play-btn-card i {
@@ -1133,19 +1097,39 @@
   .play-pokemon-name {
     font-size: 22px;
   }
-  
+
   .card-ress-correct-play {
-    top: 28.5%;
-    left: 120%;
+    padding: 11px 8px;
+    transform: translateY(-78%);
   }
-  
-  .card-ress-correct-play_active {
-    left: 37.5%;
+ 
+
+  .card-ress-correct-play p {
+    font-size: .9rem;
   }
 
   
+
+  .card-ress-incorrect-play {
+    right: -192px;
+    width: 185px;
+    padding: 15px 10px;
+  }
+  
   .card-ress-incorrect-play_active {
-    left: 36.8%;
+    right: calc(50% - 95.5px);
+  }
+
+  .card-ress-incorrect-play p {
+    font-size: .9rem;
+  }
+
+  .card-img-ress-incorrect {
+    width: 46%;
+  }
+
+  .ress-incorrect-icon i {
+    font-size: 1.5rem;
   }
 
 
@@ -1162,6 +1146,35 @@
   .play-go-to-pokedex  p {
     font-size: 23px;
   }
+
+
+  .play-pokedex__shifts {
+    top: 11px;
+    left: 20px;
+    font-size: 1.7rem;
+  }
+
+
+
+
+  .play-pokedex__setting {
+    height: 450px
+  }
+  
+  .play-pokedex__setting__option__items__icon {
+    font-size: 1.2rem;
+  }
+  
+  .play-pokedex__setting__option__items {
+    font-size: 1.2rem;
+  }
+
+  .play-pokedex__setting__text {
+    font-size: 1.2rem;
+    width: 480px
+  }
+
+
 
 
 
@@ -1190,7 +1203,7 @@
 
 
   .section-play-pokedex {
-    width: 40%;
+    width: 60%;
   }
 
   .play-btn-card i {
@@ -1200,38 +1213,107 @@
   .play-pokemon-name {
     font-size: 25px;
   }
+
+
+
+
+  .play-pokedex__setting {
+    gap: 45px;
+  }
+
+  .play-pokedex__setting {
+    height: 550px
+  }
   
+  .play-pokedex__setting__option__items {
+    font-size: 1.3rem;
+    padding: 15px 35px 15px 26px;
+    gap: 10px;
+    font-weight: 900;
+  }
+  .play-pokedex__setting__option__items-plus {
+    padding: 12px 55px 12px 55px;
+  }
+  
+  .play-pokedex__setting__option__items__icon {
+    font-size: 1.3rem;
+  }
+  
+  .play-pokedex__setting__text {
+    font-size: 1.3rem;
+    width: 550px;
+    padding: 15px 18px;
+    font-weight: 900;
+  }
+
+
+  
+
+  .play-pokedex__response-options {
+    grid-template-columns: calc(50% - 15px) calc(50% - 15px);
+    gap: 23px 30px;
+  }
+
+  .play-pokedex__response-options {
+    margin-top: 36px;
+  }
+
+
+  .play-pokedex__response-options__items {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+
+
   .card-ress-correct-play {
-    top: 20%;
-    left: 120%;
-    width: 215px;
+    padding: 15px 11px;
+    transform: translateY(-78%);
+    width: 230px;
+    right: -240px;
+    border: solid 4px rgb(0, 0, 0);
+    outline: solid 3px rgb(255, 255, 255)
   }
   
   .card-ress-correct-play_active {
-    left: 29%;
+    right: calc(25.5% - 72.5px);
+  }
+  
+
+  .card-img-ress-correct {
+    margin-bottom: 3px;
   }
 
   .card-ress-correct-play p {
-    font-size: 16px;
+    font-size: 1rem;
   }
   
   .ress-correct-icon i {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
-
 
 
   .card-ress-incorrect-play {
-    top: 15.5%;
-    left: 120%;  
+    right: -238px;
+    width: 230px;
+    border: solid 4px rgb(0, 0, 0);
+    outline: solid 3px rgb(255, 255, 255)
+
+  }
+  
+  .card-ress-incorrect-play_active {
+    right: calc(50% - 120.5px);
   }
 
-  .card-ress-incorrect-play_active {
-    left: 31%;
+  .card-ress-incorrect-play p {
+    font-size: 1rem;
+  }
+
+  .card-img-ress-incorrect {
+    width: 48%;
   }
 
   .ress-incorrect-icon i {
-    font-size: 27px;
+    font-size: 1.9rem;
   }
 
 
@@ -1250,6 +1332,11 @@
   }
 
 
+  .play-pokedex__shifts {
+    top: 11px;
+    left: 20px;
+    font-size: 1.9rem;
+  }
 
 
 }
@@ -1267,47 +1354,15 @@
     padding: 27px 0;
   }
 
-  .card-ress-correct-play {
-    top: 22.5%;
-    left: 31.5%;
-    left: 120%;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 31.5%;
-  }
-
-
-  .card-ress-incorrect-play {
-    top: 17%;
-    left: 33%; 
-    left: 120%; 
-  }
-
-  .card-ress-incorrect-play_active {
-    left: 33%;
-  }
-
-
 }
 
 
 
 @media (min-width: 1385px){
 
-  .card-ress-correct-play_active {
-    left: 32%;
+  .section-play-pokedex {
+    width: 58%;
   }
-
-
-
-  .card-ress-incorrect-play {
-    top: 19%; 
-  }
-
-  .card-ress-incorrect-play_active {
-    left: 35%;
-  } 
 
 }
 
@@ -1320,22 +1375,8 @@
     gap: 20px;
   }
 
-  .card-ress-correct-play {
-    top: 22%; 
-    width: 240px;
-  }
-  
-  .card-ress-correct-play_active {
-    left: 32%;
-  }
-
   .card-ress-correct-play p {
-   font-size: 18px;
-  }
-  
-
-  .ress-correct-icon i{
-    font-size: 30px;
+   font-size: 1.1rem;
   }
 
   .card-img-ress-correct {
@@ -1343,28 +1384,9 @@
   }
 
 
-  
-  .card-ress-incorrect-play {
-    top: 15%;
-    left: 31%; 
-    left: 120%;
-    width: 240px;
-      
-  }
-
-  .card-ress-incorrect-play_active {
-    left: 31%;
-  }
-
   .card-ress-incorrect-play p {
-    font-size: 17px;
-    
+    font-size: 1.1rem;
   }
-
-  .ress-incorrect-icon i{
-    font-size: 32px;
-  }
-
 
   .form-guess-screnn-input {
     font-size: 18px;
@@ -1400,24 +1422,7 @@
   .card-title {
     gap: 30px;
   }
-
-  .card-ress-correct-play {
-    top: 23.5%;
-  }
   
-  .card-ress-correct-play_active {
-    left: 32%;
-  }
-
-  .card-ress-incorrect-play {
-    top: 17%;
-    
-  }
-
-  .card-ress-incorrect-play_active {
-    left: 31.5%;
-  }
-
   .container-go-to-pokedex {
     margin-top: 7px;
   }
@@ -1437,8 +1442,7 @@
 @media (min-width: 1690px) {
 
   .section-play-pokedex {
-    padding-bottom: 45px; 
-    max-width: 764px;
+    padding-bottom: 120px; 
   }
 
   .container-play-pokedex {
