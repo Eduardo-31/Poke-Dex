@@ -1,6 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 import getAllPokedexApi from '../../hooks/getAllPokedexApi'
 import CardPokemons from './CardPokemons'
 import Footer from '../footer/Footer'

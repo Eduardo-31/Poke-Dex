@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import cardPokemonApi from '../../hooks/cardPokemonApi'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { setPokemonName } from '../../slices/namePokemon.slice'
 
 import pokebola from '../img/poke.png'
 

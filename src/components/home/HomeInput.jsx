@@ -12,7 +12,6 @@ const HomeInput = () => {
     const navigate = useNavigate()
     
     const submit = data => {
-      //const name = data.userName
       const name = data.userName.replace(/\s/g,'').length
       if(name > 2 && name <= 30){
         localStorage.setItem('name', data.userName)

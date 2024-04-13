@@ -1,7 +1,7 @@
 import React from 'react'
 import psyduck from '../img/psyduck-pokemon-not-found.gif'
 
-const PokemonNotFound = ({isType, search}) => {
+const PokemonNotFound = () => {
     return (
         <div className='card-search_error'>
             <div className='img-search_error'>

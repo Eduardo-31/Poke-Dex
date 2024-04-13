@@ -1,8 +1,6 @@
 import React from "react"
 
-
 import poketitle from '../img/timg-title.png'
-import psyduck from '../img/2-psyduck.png'
 import pokebola from '../img/poke.png'
 import { useNavigate } from "react-router-dom"
 
