@@ -7,6 +7,7 @@ import ProtectedRoutes from './components/ProtectedRoutes.jsx/ProtectedRoutes'
 import PlayGuessScreen from './components/play/guess/PlayGuessScreen'
 import Error404 from './components/404/Error404'
 import PlayHome from './components/play/PlayHome'
+import MemoryGameScreen from './components/play/memory/MemoryGameScreen'
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route path='play'>
               <Route index element={<PlayHome />} />
               <Route path={'guess'} element={<PlayGuessScreen />} />
+              <Route path={'memory'} element={<MemoryGameScreen />} />
             </Route>
           </Route>
         </Route>  

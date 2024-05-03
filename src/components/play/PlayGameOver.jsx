@@ -1,14 +1,16 @@
 import React from 'react'
 import './styles/PlayGameOver.css'
 import pokebola from '../img/pixelated-pokebola.png'
+import professorOak from '../img/professor-oak.gif'
 
 
 
 const arrNote = ['very bad', 'bad', 'normal', 'good', 'very good']
 
-const PlayGameOver = ({success, failed}) => {
+const PlayGameOver = ({gameMode='', success, failed, shifts=20, level}) => {
 
     const name = localStorage.getItem('name')
+
 
 
   return (
@@ -18,47 +20,92 @@ const PlayGameOver = ({success, failed}) => {
                 <a><i class="fa-solid fa-caret-down"></i></a>
                 <p>game information</p>
             </div>
-            <div className='game-over__main'>
+            <div className={gameMode === 'multiplayer' ? 'game-over__main game-over__main-player-one' : 'game-over__main'}>
                 <div className='game-over__main__name'>
                     <div className='game-over__main__name__header'>
                         <img src={pokebola} alt="" />
-                        <span>000</span>
+                        <span>{ gameMode === 'multiplayer' ? '001' : '000'}</span>
                         <p>Name</p>
                     </div>
                     <p className='game-over__main__name__content'>
-                        { name }
+                        { gameMode === 'multiplayer' ? 'Player One' : name }
                     </p>
-
                 </div>
 
                 <div className='game-over__main__detail'>
                     <div className='game-over__main__detail__text'>
-                        <span> {success}/20</span>
-                        <a> { arrNote[Math.floor(success / 5)]   }  </a>
-                        <p>score: {success} </p>
+                        <span> { gameMode === 'multiplayer' ? success.playerOne : success}/{gameMode === 'multiplayer' ? shifts.playerOne : shifts}</span>
+                        { gameMode === '' && <a> {  arrNote[Math.floor(success / 5)]   }  </a>}
+                        <p>score: { gameMode === 'multiplayer' ? success.playerOne : success} </p>
                     </div>
                     <div>
-                        <img src="https://alicnik.github.io/pokeapi/1ca1ca0a09c055b43c402d89adab7d14.gif" alt="" />
+                        <img src={professorOak} alt="image" />
                     </div>
                 </div>
 
                 <div className='game-over__main__result'>
                     <div className='game-over__main__result-group'>
                         <span>SUCCESS</span>
-                        <p> {success} </p>
+                        <p> { gameMode === 'multiplayer' ? success.playerOne : success} </p>
                     </div>
                     <div className='game-over__main__result-group-line'></div>
                     <div className='game-over__main__result-group'>
                         <span>FAILED</span>
-                        <p> {failed} </p>
+                        <p> { gameMode === 'multiplayer' ? failed.playerOne : failed} </p>
                     </div>
                 </div>
             </div>
             <div className='game-over__footer'>
                 <div className='game-over__footer__border'></div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima expedita ut saepe hic labore in sunt obcaecati rerum molestiae eius soluta sit tenetur dolore possimus, ullam eaque quisquam est impedit.</p>
+                <p>{`Hello coach ${gameMode === 'multiplayer' ? 'Player One' : name}, ¡congratulations! You completed the ${gameMode ? 'memory' : 'guessing' } game, we have evaluated your game along with your moves and returned the results that appear on the screen.`} </p>
                 <div className='game-over__footer__border'></div>
             </div>
+
+            {
+                gameMode === 'multiplayer' &&
+                <>
+                    <div className='game-over__main game-over__main-player-two'>
+                        <div className='game-over__main__name'>
+                            <div className='game-over__main__name__header'>
+                                <img src={pokebola} alt="" />
+                                <span>002</span>
+                                <p>Name</p>
+                            </div>
+                            <p className='game-over__main__name__content'>
+                                Player Two
+                            </p>
+                        </div>
+
+                        <div className='game-over__main__detail'>
+                            <div className='game-over__main__detail__text'>
+                                <span> {success.playerTwo}/{shifts.playerTwo}</span>
+                                <p>score: { success.playerTwo } </p>
+                            </div>
+                            <div>
+                                <img src={professorOak} alt="image" />
+                            </div>
+                        </div>
+
+                        <div className='game-over__main__result'>
+                            <div className='game-over__main__result-group'>
+                                <span>SUCCESS</span>
+                                <p> { success.playerTwo } </p>
+                            </div>
+                            <div className='game-over__main__result-group-line'></div>
+                            <div className='game-over__main__result-group'>
+                                <span>FAILED</span>
+                                <p> { failed.playerTwo } </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='game-over__footer'>
+                        <div className='game-over__footer__border'></div>
+                        <p>Hello coach Player Two, ¡congratulations! You completed the memory game, we have evaluated your game along with your moves and returned the results that appear on the screen.</p>
+                        <div className='game-over__footer__border'></div>
+                    </div>
+                </>
+            }
+
         </div>
     </div>
   )

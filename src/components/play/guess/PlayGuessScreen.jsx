@@ -290,8 +290,6 @@ const PlayGuessScreen = () => {
             <Footer />
         </>
 
-
-
   )
 }
 

@@ -16,10 +16,9 @@ const PlayHome = () => {
         <p className='title-play'>minigames</p>
             <img src={title} alt="" />
         <div className='portada-img-play'>
-            <img src={imagePlayHome } alt="image" loading='lazy'/>
-
             <div className='container-btn-play'>
-                <button onClick={() => navigate('guess')} className='btn-play'><i className="fa-solid fa-circle-play"></i>JUGAR</button>
+                <button onClick={() => navigate('memory')} className='btn-play'><i className="fa-solid fa-circle-play"></i>MEMORY</button>
+                <button onClick={() => navigate('guess')} className='btn-play'><i className="fa-solid fa-circle-play"></i>GUESS</button>
                 <button onClick={() => navigate('/pokedex')} className='btn-play' >GO TO POKEDEX</button>
             </div>
         </div>

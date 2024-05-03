@@ -16,7 +16,12 @@ const useCounter = (initialState=0, limit=Infinity) => {
         }
     }
 
-    return { counter, plusOne, minusOne }
+    const reset = () => {
+        setCounter(initialState)
+    }
+
+
+    return { counter, plusOne, minusOne, reset }
 
 }
 
