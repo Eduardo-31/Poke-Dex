@@ -26,7 +26,7 @@ const difficulty = {
     hard: 12
 }
 
-const PlayGuessScreen = () => {
+const GuessGameScreen = () => {
 
 
     const [pokemon, setPokemon] = useState()
@@ -293,4 +293,4 @@ const PlayGuessScreen = () => {
   )
 }
 
-export default PlayGuessScreen
+export default GuessGameScreen
