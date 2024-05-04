@@ -114,6 +114,9 @@ const MemoryGameScreen = () => {
 
     const startGame = () => {
         setIsPlay(true)
+        if(gameMode === 'player'){
+          initChronometer()
+        }
     }
 
     const stopChronometer = () => {
@@ -154,7 +157,7 @@ const MemoryGameScreen = () => {
           success={gameMode === 'player' ? results.length / 2 : { playerOne: playerOneResults.length / 2 , playerTwo: playerTwoResults.length / 2  }}
           failed={gameMode === 'player' ? shift - results.length / 2 : { playerOne:  Math.ceil(shift / 2 - playerOneResults.length / 2), playerTwo: Math.floor(shift / 2 - playerTwoResults.length / 2)}}
           shifts={gameMode === 'player' ? shift : { playerOne: Math.ceil(shift / 2) , playerTwo: Math.floor(shift / 2) }}
-          level={level}
+          time={time}
         />
         :
         <div className='memory-game-container'>

@@ -8,7 +8,6 @@ const Chronometer = ({time}) => {
     let hours = date.getUTCHours()
     let minutes = date.getMinutes()
     let seconds = date.getSeconds()
-    let mili = date.getMilliseconds()
 
     if(hours < 10){ hours = '0' + hours}
     if(minutes < 10){ minutes = '0' + minutes}

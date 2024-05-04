@@ -7,9 +7,19 @@ import professorOak from '../img/professor-oak.gif'
 
 const arrNote = ['very bad', 'bad', 'normal', 'good', 'very good']
 
-const PlayGameOver = ({gameMode='', success, failed, shifts=20, level}) => {
+const PlayGameOver = ({gameMode='', success, failed, shifts=20, time}) => {
 
     const name = localStorage.getItem('name')
+
+    const date = new Date(time)
+
+    let hours = date.getUTCHours()
+    let minutes = date.getMinutes()
+    let seconds = date.getSeconds()
+
+    if(hours < 10){ hours = '0' + hours}
+    if(minutes < 10){ minutes = '0' + minutes}
+    if(seconds < 10){ seconds = '0' + seconds}
 
 
 
@@ -36,6 +46,7 @@ const PlayGameOver = ({gameMode='', success, failed, shifts=20, level}) => {
                     <div className='game-over__main__detail__text'>
                         <span> { gameMode === 'multiplayer' ? success.playerOne : success}/{gameMode === 'multiplayer' ? shifts.playerOne : shifts}</span>
                         { gameMode === '' && <a> {  arrNote[Math.floor(success / 5)]   }  </a>}
+                        { gameMode === 'player' && <a> {`${hours}:${minutes}:${seconds}`} </a>}
                         <p>score: { gameMode === 'multiplayer' ? success.playerOne : success} </p>
                     </div>
                     <div>
