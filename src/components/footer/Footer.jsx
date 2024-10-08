@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
         <div className='footer-line'></div>
         <p>Designed and made by: Eduardo Izacupe Coello</p>
-        <p>Copyright © 2022 - All rights reserved</p>
+        <p>Copyright - All rights reserved</p>
      
     </footer>
   )
